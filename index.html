@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bijok Engineering Sdn. Bhd. | Project Engineering & Manpower Services</title>
+<meta name="description" content="Bijok Engineering Sdn. Bhd. — specialist project engineering and manpower services for the Oil & Gas and petrochemical sectors in Malaysia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --navy:   #0D2137;
+  --blue:   #1E6FD9;
+  --amber:  #F5A623;
+  --light:  #F0F4FA;
+  --grey:   #6B7E91;
+  --border: #D5DDE8;
+  --white:  #FFFFFF;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── NAV ──────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  height: 68px;
+  background: rgba(13,33,55,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-mark {
+  width: 32px; height: 32px; position: relative; flex-shrink: 0;
+}
+.nav-mark svg { width: 100%; height: 100%; }
+.nav-wordmark {
+  font-family: var(--font-head);
+  font-weight: 800; font-size: 17px;
+  color: var(--white); letter-spacing: -0.3px;
+  line-height: 1;
+}
+.nav-wordmark span { color: var(--blue); }
+
+.nav-links {
+  display: flex; gap: 32px; align-items: center;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--amber);
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  letter-spacing: 0 !important;
+  font-size: 13px !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85 !important; }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.25s; }
+.mobile-menu {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: var(--navy); padding: 24px 5vw;
+  border-bottom: 2px solid var(--blue);
+  flex-direction: column; gap: 20px; z-index: 99;
+}
+.mobile-menu a { font-size: 15px; color: rgba(255,255,255,0.8); font-weight: 500; }
+.mobile-menu.open { display: flex; }
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; align-items: center;
+  padding: 120px 5vw 80px;
+  position: relative; overflow: hidden;
+}
+
+/* Background geometric pattern */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,111,217,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,111,217,0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,111,217,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 900px;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--amber); text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+}
+.hero-tag::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); display: block;
+}
+
+.hero-h1 {
+  font-family: var(--font-head);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800; line-height: 1.02;
+  color: var(--white); letter-spacing: -2px;
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+}
+.hero-h1 em { color: var(--blue); font-style: normal; }
+.hero-h1 .accent { color: var(--amber); }
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300; line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  max-width: 600px; margin-bottom: 44px;
+  opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+}
+
+.btn-primary {
+  background: var(--amber); color: var(--navy);
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 14px; padding: 14px 28px; border-radius: 8px;
+  letter-spacing: 0.02em; transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,166,35,0.35); }
+
+.btn-secondary {
+  background: transparent; color: var(--white);
+  font-family: var(--font-head); font-weight: 600;
+  font-size: 14px; padding: 14px 28px; border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  letter-spacing: 0.02em; transition: border-color 0.2s, background 0.2s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+/* Stats strip */
+.hero-stats {
+  display: flex; gap: 0;
+  margin-top: 72px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 32px;
+  opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
+}
+.hero-stat {
+  flex: 1; padding: 0 24px 0 0;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-val {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: 2.2rem; color: var(--white); letter-spacing: -1px;
+  line-height: 1;
+}
+.hero-stat-val span { color: var(--amber); }
+.hero-stat-label {
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  margin-top: 6px; font-weight: 400; letter-spacing: 0.03em;
+}
+
+/* ── SECTION COMMONS ──────────────────────────────────────────────────── */
+section { padding: 96px 5vw; }
+.section-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+}
+.section-h2 {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--navy); letter-spacing: -1px; line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-h2 em { color: var(--blue); font-style: normal; }
+.section-lead {
+  font-size: 1.05rem; color: var(--grey);
+  line-height: 1.75; max-width: 600px; margin-bottom: 52px;
+}
+
+/* ── ABOUT ────────────────────────────────────────────────────────────── */
+.about { background: var(--light); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+
+.about-left .section-lead { margin-bottom: 28px; }
+
+.cred-list {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 24px;
+}
+.cred-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--white); border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.cred-dot {
+  width: 8px; height: 8px; border-radius: 2px;
+  background: var(--blue); flex-shrink: 0; margin-top: 5px;
+}
+.cred-text { font-size: 13.5px; color: var(--navy); line-height: 1.5; }
+
+.about-right {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.pillar-card {
+  background: var(--white); border-radius: 12px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  transition: border-left-color 0.2s, transform 0.2s;
+}
+.pillar-card:hover { border-left-color: var(--amber); transform: translateX(4px); }
+.pillar-title {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 15px; color: var(--navy); margin-bottom: 6px;
+}
+.pillar-desc { font-size: 13.5px; color: var(--grey); line-height: 1.6; }
+
+/* ── SERVICES ─────────────────────────────────────────────────────────── */
+.services { background: var(--white); }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--light); border-radius: 14px;
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--blue);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,33,55,0.1); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-num {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: 2rem; color: rgba(30,111,217,0.12);
+  line-height: 1; margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+.service-title {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 16px; color: var(--navy); margin-bottom: 10px;
+}
+.service-desc { font-size: 13.5px; color: var(--grey); line-height: 1.65; }
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
+}
+.service-tag {
+  font-size: 11px; font-weight: 500;
+  background: rgba(30,111,217,0.1); color: var(--blue);
+  padding: 3px 9px; border-radius: 999px;
+}
+
+/* ── SECTORS ──────────────────────────────────────────────────────────── */
+.sectors {
+  background: var(--navy); color: var(--white);
+}
+.sectors .section-h2 { color: var(--white); }
+.sectors .section-lead { color: rgba(255,255,255,0.55); }
+
+.sectors-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.sector-card {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 28px 28px;
+  background: rgba(255,255,255,0.03);
+  transition: background 0.25s, border-color 0.25s;
+  position: relative;
+}
+.sector-card:hover {
+  background: rgba(30,111,217,0.12);
+  border-color: rgba(30,111,217,0.4);
+}
+.sector-num {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: 1.6rem; color: var(--amber); margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.sector-name {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 17px; color: var(--white); margin-bottom: 10px;
+}
+.sector-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+/* Standards strip */
+.standards-strip {
+  margin-top: 52px;
+  padding: 28px 32px;
+  border-radius: 12px;
+  background: rgba(245,166,35,0.07);
+  border: 1px solid rgba(245,166,35,0.2);
+}
+.standards-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 14px;
+}
+.standards-list {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.standard-badge {
+  font-family: var(--font-head); font-weight: 700; font-size: 12px;
+  padding: 6px 14px; border-radius: 6px;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ── RATES ────────────────────────────────────────────────────────────── */
+.rates { background: var(--light); }
+
+.rates-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--white); border-radius: 14px;
+  overflow: hidden; border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(13,33,55,0.06);
+  margin-bottom: 16px;
+}
+.rates-table thead { background: var(--navy); }
+.rates-table th {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); padding: 16px 20px; text-align: left;
+}
+.rates-table th:last-child { text-align: right; }
+.rates-table td {
+  padding: 16px 20px; font-size: 14px; color: var(--navy);
+  border-bottom: 1px solid var(--border); vertical-align: top;
+}
+.rates-table tr:last-child td { border-bottom: none; }
+.rates-table tr:nth-child(even) td { background: var(--light); }
+.rates-table .role-name { font-weight: 600; font-size: 14px; }
+.rates-table .role-scope { font-size: 12.5px; color: var(--grey); margin-top: 3px; }
+.rates-table .rate-val {
+  font-family: var(--font-head); font-weight: 700; font-size: 15px;
+  color: var(--blue); text-align: right; white-space: nowrap;
+}
+.rates-note {
+  font-size: 12px; color: var(--grey); line-height: 1.6;
+  padding: 14px 18px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+
+/* ── CONTACT ──────────────────────────────────────────────────────────── */
+.contact { background: var(--white); }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+.contact-block {
+  background: var(--light); border-radius: 12px;
+  padding: 22px 24px; border: 1px solid var(--border);
+}
+.contact-block-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+}
+.contact-block-val {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 16px; color: var(--navy);
+}
+.contact-block-sub { font-size: 13px; color: var(--grey); margin-top: 4px; }
+
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: var(--white);
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 14px; padding: 14px 24px; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 8px; width: fit-content;
+}
+.whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+.whatsapp-btn svg { width: 20px; height: 20px; }
+
+.contact-right {
+  background: var(--navy); border-radius: 16px;
+  padding: 36px 36px; color: var(--white);
+}
+.contact-right-title {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: 1.5rem; color: var(--white);
+  margin-bottom: 8px; letter-spacing: -0.5px;
+}
+.contact-right-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+
+.form-group { margin-bottom: 16px; }
+.form-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 7px; display: block; letter-spacing: 0.04em; }
+.form-input {
+  width: 100%; padding: 12px 16px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; color: var(--white); font-family: var(--font-body); font-size: 14px;
+  outline: none; transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--blue); }
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+
+.form-submit {
+  width: 100%; background: var(--amber); color: var(--navy);
+  font-family: var(--font-head); font-weight: 700; font-size: 14px;
+  padding: 14px; border-radius: 8px; border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s; letter-spacing: 0.02em;
+}
+.form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── FOOTER ───────────────────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 40px 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-left {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: 16px; color: var(--white); letter-spacing: -0.3px;
+}
+.footer-left span { color: var(--blue); }
+.footer-right { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+/* ── ANIMATIONS ───────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* stagger children */
+.reveal-stagger > * {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.32s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.40s; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 0; flex-wrap: wrap; }
+  .hero-stat { flex: 0 0 50%; padding: 16px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-h1 { letter-spacing: -1px; }
+  section { padding: 64px 5vw; }
+  .contact-right { padding: 24px 20px; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="8" width="24" height="24" rx="4" stroke="white" stroke-width="2.5" transform="rotate(45 20 20)"/>
+        <rect x="13" y="13" width="14" height="14" rx="3" fill="#1E6FD9" transform="rotate(45 20 20)"/>
+        <rect x="18.5" y="12" width="3" height="16" rx="1.5" fill="white"/>
+        <rect x="12" y="18.5" width="16" height="3" rx="1.5" fill="white"/>
+        <circle cx="29" cy="11" r="4" fill="#F5A623"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark">BIJOK <span>ENGINEERING</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#rates">Rates</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#sectors" onclick="toggleMenu()">Sectors</a>
+  <a href="#rates" onclick="toggleMenu()">Rates</a>
+  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-tag">Oil &amp; Gas · Petrochemical · Malaysia</div>
+    <h1 class="hero-h1">
+      <em>Engineering</em><br>
+      expertise,<br>
+      <span class="accent">on demand.</span>
+    </h1>
+    <p class="hero-sub">
+      Bijok Engineering Sdn. Bhd. supplies specialist project engineers,
+      document control coordinators, and planning engineers — ready to
+      deploy across Malaysia's O&amp;G and petrochemical projects.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">3<span>+</span></div>
+        <div class="hero-stat-label">Core disciplines</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val" style="padding-left:24px">O&amp;G</div>
+        <div class="hero-stat-label" style="padding-left:24px">Primary sector</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val" style="padding-left:24px">MY</div>
+        <div class="hero-stat-label" style="padding-left:24px">Nationwide coverage</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val" style="padding-left:24px">Mid<span>+</span></div>
+        <div class="hero-stat-label" style="padding-left:24px">Experience level</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <p class="section-tag">Who We Are</p>
+      <h2 class="section-h2">Built for <em>project people</em></h2>
+      <p class="section-lead">
+        Bijok Engineering Sdn. Bhd. provides specialist engineering manpower
+        and project support services to the Oil &amp; Gas and petrochemical
+        sectors in Malaysia. We supply experienced professionals for
+        project execution, document management, and planning — on contract,
+        project, or retainer basis.
+      </p>
+      <p style="font-size:14px;color:var(--grey);line-height:1.7;margin-bottom:24px">
+        Our people are familiar with Petronas, PRPC, and PGB client ecosystems.
+        We understand the documentation standards, the approval workflows, and
+        the pace of Malaysian O&amp;G projects — so your team hits the ground running.
+      </p>
+      <div class="cred-list">
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text">Experienced in EPC and brownfield project execution — onshore facilities, pipelines, utilities</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text">Standards: ASME B31.3, Petronas Technical Standards (PTS), API, TNB requirements</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text">EDMS platforms: Aconex, AVEVA, SharePoint, bespoke client systems</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text">Planning tools: Primavera P6, MS Project, progress reporting and delay analysis</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right reveal-stagger">
+      <div class="pillar-card">
+        <div class="pillar-title">Client-ready professionals</div>
+        <div class="pillar-desc">Mid-level staff (3–7 years) who understand the process, the paperwork, and the pace. No hand-holding required.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-title">Flexible deployment</div>
+        <div class="pillar-desc">Day rate, monthly contract, project duration, or retainer — we fit around your project structure, not the other way around.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-title">Single point of contact</div>
+        <div class="pillar-desc">One call, one invoice. We handle the admin so your procurement team doesn't have to chase multiple vendors.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-title">Replacement guarantee</div>
+        <div class="pillar-desc">If a staff member is withdrawn, we provide a replacement of equivalent grade within 2 weeks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <p class="section-tag">What We Provide</p>
+    <h2 class="section-h2">Three disciplines, <em>one provider</em></h2>
+    <p class="section-lead">
+      We specialise in three core project support functions that every O&amp;G
+      execution team needs — and we deliver all three under a single engagement.
+    </p>
+  </div>
+  <div class="services-grid reveal-stagger">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Project Engineer</div>
+      <div class="service-desc">Technical coordination, engineering review, site supervision, method statement preparation, TQ management, vendor correspondence, and client interface.</div>
+      <div class="service-tags">
+        <span class="service-tag">Mech / Civil / E&I</span>
+        <span class="service-tag">Site &amp; office</span>
+        <span class="service-tag">RM 650–900/day</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Document Control Coordinator</div>
+      <div class="service-desc">Document register management, transmittal issuance, numbering system setup, client portal submissions, revision control, and project archiving.</div>
+      <div class="service-tags">
+        <span class="service-tag">Aconex / AVEVA</span>
+        <span class="service-tag">SharePoint</span>
+        <span class="service-tag">RM 350–500/day</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Planning Engineer</div>
+      <div class="service-desc">Schedule development in P6 or MS Project, progress monitoring, lookahead preparation, S-curve reporting, delay analysis, and MOM documentation.</div>
+      <div class="service-tags">
+        <span class="service-tag">Primavera P6</span>
+        <span class="service-tag">MS Project</span>
+        <span class="service-tag">RM 550–800/day</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Document Production</div>
+      <div class="service-desc">Standalone document preparation — method statements, TQs, ITPs, lifting plans, risk assessments, SOWs, MTOs, and shutdown work packs. Priced per document.</div>
+      <div class="service-tags">
+        <span class="service-tag">Per document</span>
+        <span class="service-tag">3-tier complexity</span>
+        <span class="service-tag">From RM 200</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Shutdown &amp; Turnaround Support</div>
+      <div class="service-desc">Dedicated PE and Planning Engineer for shutdown duration. Schedule build, scope definition, work pack preparation, site coordination, and closeout documentation.</div>
+      <div class="service-tags">
+        <span class="service-tag">TA / Shutdown</span>
+        <span class="service-tag">Day rate applies</span>
+        <span class="service-tag">2–6 weeks</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Monthly Retainer</div>
+      <div class="service-desc">Up to 8 hours per month of PE support — TQ responses, document reviews, ad hoc engineering queries. Ideal for contractors without a full-time PE on the books.</div>
+      <div class="service-tags">
+        <span class="service-tag">Flexible</span>
+        <span class="service-tag">RM 1,200/mo</span>
+        <span class="service-tag">No minimum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="reveal">
+    <p class="section-tag" style="color:var(--amber)">Where We Work</p>
+    <h2 class="section-h2">Sectors &amp; <em>ecosystems</em></h2>
+    <p class="section-lead">
+      Our people are deployed across Malaysia's major project ecosystems —
+      familiar with the clients, the documentation standards, and the pace.
+    </p>
+  </div>
+  <div class="sectors-grid reveal-stagger">
+    <div class="sector-card">
+      <div class="sector-num">O&amp;G</div>
+      <div class="sector-name">Oil &amp; Gas / Petrochemical</div>
+      <div class="sector-desc">Upstream and downstream project execution — process plants, pipelines, utilities, and brownfield modifications. Experienced in Petronas, PRPC, and PGB ecosystems.</div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-num">EPC</div>
+      <div class="sector-name">Engineering, Procurement &amp; Construction</div>
+      <div class="sector-desc">Execution-phase support for EPC contractors — technical submittals, vendor coordination, site supervision, schedule management, and closeout documentation.</div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-num">TA</div>
+      <div class="sector-name">Turnarounds &amp; Shutdowns</div>
+      <div class="sector-desc">Dedicated manpower for planned shutdowns and turnarounds — from scope definition and work pack preparation through to site execution and closeout.</div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-num">INF</div>
+      <div class="sector-name">Infrastructure &amp; Utilities</div>
+      <div class="sector-desc">Power, water, and civil infrastructure projects requiring engineering coordination, document control, and planning support — TNB and utility sector experience included.</div>
+    </div>
+  </div>
+  <div class="standards-strip reveal" style="margin-top:52px">
+    <div class="standards-label">Standards &amp; Codes We Work With</div>
+    <div class="standards-list">
+      <span class="standard-badge">ASME B31.3</span>
+      <span class="standard-badge">ASME B16.10</span>
+      <span class="standard-badge">API 598</span>
+      <span class="standard-badge">Petronas PTS</span>
+      <span class="standard-badge">TNB Requirements</span>
+      <span class="standard-badge">DOSH / OSH Act</span>
+      <span class="standard-badge">ISO 9001</span>
+      <span class="standard-badge">IEC 60502</span>
+    </div>
+  </div>
+</section>
+
+<!-- RATES -->
+<section class="rates" id="rates">
+  <div class="reveal">
+    <p class="section-tag">Transparent Pricing</p>
+    <h2 class="section-h2">Indicative <em>rates</em></h2>
+    <p class="section-lead">
+      All rates are for mid-level staff (3–7 years experience), in Malaysian Ringgit.
+      Final fee confirmed after scope discussion. Full rate card available on request.
+    </p>
+  </div>
+  <div class="reveal">
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Day Rate (RM)</th>
+          <th>Monthly Rate (RM)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="role-name">Project Engineer (PE)</div>
+            <div class="role-scope">Mechanical / Civil / E&I — site &amp; office</div>
+          </td>
+          <td><div class="rate-val">650 – 900</div></td>
+          <td><div class="rate-val">13,000 – 18,000</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="role-name">Document Control Coordinator (DCC)</div>
+            <div class="role-scope">Aconex, AVEVA, SharePoint experience</div>
+          </td>
+          <td><div class="rate-val">350 – 500</div></td>
+          <td><div class="rate-val">7,000 – 10,000</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="role-name">Planning Engineer</div>
+            <div class="role-scope">Primavera P6 / MS Project, S-curve, delay analysis</div>
+          </td>
+          <td><div class="rate-val">550 – 800</div></td>
+          <td><div class="rate-val">11,000 – 16,000</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="role-name">Full Team Package (PE + DCC + Planner)</div>
+            <div class="role-scope">Bundle rate — 5–8% discount vs individual billing</div>
+          </td>
+          <td><div class="rate-val">1,550 – 2,200</div></td>
+          <td><div class="rate-val">31,000 – 44,000</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="rates-note">
+      * Rates exclude statutory contributions (EPF/SOCSO), site allowances, and travel unless stated.
+      Weekend and OT at 1.5× day rate. Minimum engagement: 1 month for monthly rate.
+      Contact us for a detailed quotation tailored to your project scope and duration.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <p class="section-tag">Get in Touch</p>
+      <h2 class="section-h2">Let's talk <em>scope</em></h2>
+      <p class="section-lead">
+        Tell us your project requirements and timeline. We'll confirm
+        availability and provide a firm quotation within one business day.
+      </p>
+      <div class="contact-info">
+        <div class="contact-block">
+          <div class="contact-block-label">Company</div>
+          <div class="contact-block-val">Bijok Engineering Sdn. Bhd.</div>
+          <div class="contact-block-sub">SSM Reg. No. [to be filled]</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Location</div>
+          <div class="contact-block-val">Malaysia</div>
+          <div class="contact-block-sub">Available for deployment nationwide</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Email</div>
+          <div class="contact-block-val">[your@bijoks.com]</div>
+          <div class="contact-block-sub">Response within 1 business day</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">WhatsApp</div>
+          <div class="contact-block-val">[+60 your number]</div>
+          <div class="contact-block-sub">Fastest way to reach us</div>
+        </div>
+        <a href="https://wa.me/601XXXXXXXX" class="whatsapp-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Now
+        </a>
+      </div>
+    </div>
+    <div class="contact-right reveal">
+      <div class="contact-right-title">Send an enquiry</div>
+      <div class="contact-right-sub">We'll get back to you within 24 hours.</div>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Ahmad bin Abdullah">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company</label>
+        <input type="text" class="form-input" placeholder="Your company name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">What do you need?</label>
+        <textarea class="form-input" placeholder="Tell us briefly — role needed, project location, duration, and start date..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">BIJOK <span>ENGINEERING</span> SDN. BHD.</div>
+  <div class="footer-right">© 2025 Bijok Engineering Sdn. Bhd. · Malaysia · All rights reserved</div>
+</footer>
+
+<script>
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+// Nav active state
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 32px rgba(0,0,0,0.25)' : 'none';
+});
+
+// Form submit
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ Enquiry sent — we\'ll be in touch soon!';
+  btn.style.background = '#25D366';
+  btn.style.color = 'white';
+  setTimeout(() => {
+    btn.textContent = 'Send Enquiry →';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 4000);
+}
+
+// Smooth close mobile menu on nav link click
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
